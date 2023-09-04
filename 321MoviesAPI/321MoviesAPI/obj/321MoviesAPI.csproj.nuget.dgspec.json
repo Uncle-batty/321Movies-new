@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\batty\\OneDrive\\Desktop\\API\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj": {}
+    "C:\\Users\\batty\\OneDrive\\Desktop\\Projects\\321Movies-new\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\batty\\OneDrive\\Desktop\\API\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj": {
+    "C:\\Users\\batty\\OneDrive\\Desktop\\Projects\\321Movies-new\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\batty\\OneDrive\\Desktop\\API\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj",
+        "projectUniqueName": "C:\\Users\\batty\\OneDrive\\Desktop\\Projects\\321Movies-new\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj",
         "projectName": "321MoviesAPI",
-        "projectPath": "C:\\Users\\batty\\OneDrive\\Desktop\\API\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj",
+        "projectPath": "C:\\Users\\batty\\OneDrive\\Desktop\\Projects\\321Movies-new\\321MoviesAPI\\321MoviesAPI\\321MoviesAPI.csproj",
         "packagesPath": "C:\\Users\\batty\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\batty\\OneDrive\\Desktop\\API\\321MoviesAPI\\321MoviesAPI\\obj\\",
+        "outputPath": "C:\\Users\\batty\\OneDrive\\Desktop\\Projects\\321Movies-new\\321MoviesAPI\\321MoviesAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.2, )"

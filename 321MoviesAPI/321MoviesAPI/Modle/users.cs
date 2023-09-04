@@ -4,7 +4,7 @@ namespace _321MoviesAPI.Modle
 {
     public class users
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string name { get; set; }
         [Required]

@@ -16,6 +16,14 @@ builder.Services.AddDbContext<MyDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
 
+
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
+
 //my endpoints
 
 app.MapPost("/SaveCatagory", async (Catagory catagory, MyDataContext db) =>

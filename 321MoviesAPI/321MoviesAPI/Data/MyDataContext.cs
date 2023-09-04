@@ -12,6 +12,7 @@ namespace _321MoviesAPI.Data
         public DbSet<Catagory> Catagories => Set<Catagory>();
         public DbSet<Directors> directors => Set<Directors>();
         public DbSet<Movies> moviess => Set<Movies>();
+        public DbSet<users> Users => Set<users>();
     }
 }
 

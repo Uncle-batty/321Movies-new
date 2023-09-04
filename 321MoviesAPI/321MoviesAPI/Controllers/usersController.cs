@@ -1,43 +1,101 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using _321MoviesAPI.Data;
+using _321MoviesAPI.Modle;
+using Microsoft.EntityFrameworkCore;
+using _321MoviesAPI.Migrations;
 
 namespace _321MoviesAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class usersController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        // GET: api/<usersController>
+        private readonly MyDataContext _db;
+
+        public UsersController(MyDataContext db)
+        {
+            _db = db;
+        }
+
+        // GET: api/users
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var users = await _db.Users.ToListAsync();
+            return Ok(users);
         }
 
-        // GET api/<usersController>/5
+        // GET api/users/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            var user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
+        // GET api/users/email/john@example.com (by email)
+        [HttpGet("email/{email}")]
+        public async Task<IActionResult> GetByemail(string email)
+        {
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.email == email);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
         }
 
-        // POST api/<usersController>
+        // POST api/users
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] users user)
         {
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            _db.Users.Add(user);
+            await _db.SaveChangesAsync();
+
+            return Created($"/api/Users/{user.Id}", user);
         }
 
-        // PUT api/<usersController>/5
+        // PUT api/users/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] users user)
         {
+            if (user == null || user.Id != id)
+            {
+                return BadRequest();
+            }
+
+            _db.Entry(user).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+
+            return NoContent();
         }
 
-        // DELETE api/<usersController>/5
+        // DELETE api/users/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var user = await _db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _db.Users.Remove(user);
+            await _db.SaveChangesAsync();
+
+            return Ok(user);
         }
     }
 }
