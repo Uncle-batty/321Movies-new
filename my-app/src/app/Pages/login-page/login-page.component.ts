@@ -22,7 +22,7 @@ submitForm() {
         console.log('Response from loginuser:', response);
 
         if (response && response.password === this.password) {
-          this.router.navigate(['/homepage']);
+          this.router.navigate(['/user-home']);
 
         } else {
          console.log('Password does not match');
